@@ -62,7 +62,6 @@ public class PermissionUtils {
             case Manifest.permission.RECEIVE_WAP_PUSH:
             case Manifest.permission.RECEIVE_MMS:
                 return PermissionConstants.PERMISSION_GROUP_SMS;
-            case Manifest.permission.READ_EXTERNAL_STORAGE:
             case Manifest.permission.WRITE_EXTERNAL_STORAGE:
                 return PermissionConstants.PERMISSION_GROUP_STORAGE;
             case Manifest.permission.ACCESS_MEDIA_LOCATION:
@@ -218,9 +217,6 @@ public class PermissionUtils {
                 break;
 
             case PermissionConstants.PERMISSION_GROUP_STORAGE:
-                if (hasPermissionInManifest(context, permissionNames, Manifest.permission.READ_EXTERNAL_STORAGE))
-                    permissionNames.add(Manifest.permission.READ_EXTERNAL_STORAGE);
-
                 if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q || (Build.VERSION.SDK_INT == Build.VERSION_CODES.Q && Environment.isExternalStorageLegacy())) {
                     if (hasPermissionInManifest(context, permissionNames, Manifest.permission.WRITE_EXTERNAL_STORAGE))
                         permissionNames.add(Manifest.permission.WRITE_EXTERNAL_STORAGE);
